@@ -1,0 +1,55 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Windows.Controls;
+
+namespace Register.ViewModels
+{
+    public class true_dr 
+    {
+        public byte code { get; set; }
+        public string name { get; set; }
+
+        public string errorMessage;
+
+        public true_dr(SqlDataReader reader)
+        {
+            if (reader.GetValue(reader.GetOrdinal("code")) != DBNull.Value)
+                code = reader.GetByte(reader.GetOrdinal("code"));
+
+            if (reader.GetValue(reader.GetOrdinal("name")) != DBNull.Value)
+                name = reader.GetString(reader.GetOrdinal("name"));
+
+        }
+
+        public static List<true_dr> TrueDrList(string strConn) 
+        {
+            List<true_dr> list = new List<true_dr>();
+            using (SqlConnection conn = new SqlConnection(strConn))
+            {
+                conn.Open();
+                SqlDataReader dr = null;
+                try
+                {
+                    SqlCommand command = new SqlCommand(qLoad, conn);
+                    dr = command.ExecuteReader(System.Data.CommandBehavior.CloseConnection);
+                    while (dr.Read()) list.Add(new true_dr(dr));
+                }
+                catch (Exception ex)
+                {
+                    System.Windows.MessageBox.Show(ex.Message);
+                }
+                finally { if (dr != null) dr.Close(); }
+            }
+            return list;
+        }
+
+        public static void FillComboBox(ComboBox cmb, string strConn)
+        {
+            cmb.Items.Clear();
+            foreach (true_dr stt in TrueDrList(strConn)) cmb.Items.Add(stt);
+        }
+
+        public static string qLoad { get { return "select * from [nsi].[true_dr]"; } }
+    }
+}
