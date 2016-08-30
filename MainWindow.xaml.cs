@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 //using Register.ViewModels;
+using Register.NSIWindows;
 
 namespace Register
 {
@@ -27,6 +28,13 @@ namespace Register
             //MessageBox.Show(curdir);
             InitializeComponent();
             //status.FillComboBox(cmdStatus, App.connectionString);
+        }
+
+        private void OpenStreetsWnd(object sender, RoutedEventArgs e)
+        {
+            StreetsWnd streetsWnd = new StreetsWnd(this);
+            //streetsWnd.Show();
+            streetsWnd.ShowDialog();
         }
     }
 }

@@ -3,12 +3,15 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:vw="clr-namespace:Register.Views"
         xmlns:local="clr-namespace:Register"
-        Title="РЕГИСТР ЗАСТРАХОВАННЫХ СМО" MinHeight="480" MinWidth="640" WindowStartupLocation="CenterScreen" WindowState="Maximized">
+        Title="РЕГИСТР ЗАСТРАХОВАННЫХ СМО"
+        MinHeight="480" MinWidth="640" WindowStartupLocation="CenterScreen" WindowState="Maximized">
     <Grid>
+        <!--
         <Grid.Background>
             <ImageBrush ImageSource="LightBrushedx.jpg" TileMode="Tile"
                         ViewportUnits="Absolute" Viewport="0,0,200,200"/>
         </Grid.Background>
+        -->
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
@@ -18,8 +21,13 @@
         </Grid.RowDefinitions>
 
         <Menu Grid.Row="0">
-            <MenuItem Header="СЕРВИС"></MenuItem>
-            <MenuItem Header="ОТЧЁТЫ"></MenuItem>
+            <MenuItem Header="НСИ">
+                <MenuItem Header="УЛИЦЫ ГОР. МОСКВЫ (Streets)" Click="OpenStreetsWnd"></MenuItem>
+                <MenuItem Header="ПРИЗНАКИ ДВИЖЕНИЯ (Jt)"></MenuItem>
+                <MenuItem Header="СЦЕНАРИИ (Scenario)"></MenuItem>
+                <MenuItem Header="КАТЕГОРИИ ЗАСТРАХОВАННЫХ (Kl)"></MenuItem>
+                <MenuItem Header="СТАТУС ЗАПИСИ (Status)"></MenuItem>
+            </MenuItem>
             <MenuItem Header="ВЫХОД"></MenuItem>
         </Menu>
 

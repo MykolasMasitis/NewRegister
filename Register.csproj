@@ -81,6 +81,9 @@
     <Compile Include="Model\Answers.cs" />
     <Compile Include="Model\Moves.cs" />
     <Compile Include="Model\StoreDB.cs" />
+    <Compile Include="NSIWindows\StreetsWnd.xaml.cs">
+      <DependentUpon>StreetsWnd.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\answer.cs" />
     <Compile Include="ViewModels\AnswersViewModel.cs" />
     <Compile Include="ViewModels\move.cs" />
@@ -128,6 +131,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="NSIWindows\StreetsWnd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\AnswersView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
